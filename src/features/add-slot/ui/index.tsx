@@ -1,6 +1,6 @@
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import { Button } from "@mui/material";
-import { useCalendar } from "../../../entities/calendar/lib/useCalendar";
+import { useCalendar } from "../../../entities/calendar";
 
 export const AddSlot = () => {
   const { date } = useCalendar();

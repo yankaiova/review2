@@ -1,5 +1,6 @@
-import { useCalendar } from "../../../entities/calendar/lib/useCalendar";
+import { useCalendar } from "../../../entities/calendar";
 import { Slot } from "../../../shared/model/types";
+import { SlotItem } from "../../../entities/slot";
 
 const slots: Slot[] = [];
 export const SlotList = () => {
@@ -10,7 +11,7 @@ export const SlotList = () => {
   return (
     <div>
       {slots.map((item: Slot) => (
-        <Slotitem key={item.slot_id} slot={item} />
+        <SlotItem key={item.slot_id} slot={item} />
       ))}
     </div>
   );

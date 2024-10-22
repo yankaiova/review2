@@ -1,5 +1,6 @@
 import { Meeting } from "../../../shared/model/types";
-import { useCalendar } from "../../../entities/calendar/lib/useCalendar";
+import { useCalendar } from "../../../entities/calendar";
+import { MeetingItem } from "../../../entities/meeting";
 
 const meetings: Meeting[] = [];
 export const MeetingList = () => {

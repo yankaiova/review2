@@ -1,10 +1,10 @@
 import { useContext } from "react";
-import { AuthContext } from "../../../shared/context";
 import { Typography } from "@mui/material";
-import { MeetingList } from "../../meeting-list/ui";
-import { SlotList } from "../../slot-list/ui";
-import { AddSlot } from "../../../features/add-slot/ui";
-import { BaseCalendar } from "../../../entities/calendar/ui";
+import { AuthContext } from "../../../shared/context";
+import { MeetingList } from "../../meeting-list";
+import { SlotList } from "../../slot-list";
+import { AddSlot } from "../../../features/add-slot";
+import { BaseCalendar } from "../../../entities/calendar";
 
 export const FullCalendar = () => {
   const { role } = useContext(AuthContext);
