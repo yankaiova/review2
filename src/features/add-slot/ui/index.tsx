@@ -1,5 +1,5 @@
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import { Button, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { useCalendar } from "../../../entities/calendar";
 import { BaseModal } from "../../../shared/ui";
 import { Select, InputLabel, MenuItem } from "@mui/material";
