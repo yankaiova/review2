@@ -7,8 +7,9 @@ type Props = {
 
 export const AuthProvider = ({ children }: Props) => {
   const [role, setRole] = useState<string>("client");
+  const [user_id, setUser] = useState<number>(0);
 
-  const value = { role, setRole };
+  const value = { role, setRole, user_id, setUser };
   const memoizedValue = useMemo(() => value, [value]);
 
   return (

@@ -1,16 +1,19 @@
 import { Box, Rating, Typography } from "@mui/material";
-import BaseModal from "../../../shared/ui/BaseBox";
+import { BaseModal } from "../../../shared/ui";
 import { useState } from "react";
-export const Rate = () => {
-  const [value, setValue] = useState<number | null>(5);
 
+type PropsRate = {
+  id: number;
+};
+export const Rate = ({ id }: PropsRate) => {
+  const [value, setValue] = useState<number | null>(5);
   const setRating = (e: React.SyntheticEvent, newValue: number | null) => {
     setValue(newValue);
     console.log(newValue);
   };
 
   return (
-    <BaseModal eventName="Оценить">
+    <BaseModal eventName="Завершить встречу">
       <Box sx={{ "& > legend": { mt: 2 } }}>
         <Typography component="legend">Oцените встречу</Typography>
         <Rating name="simple-controlled" value={value} onChange={setRating} />

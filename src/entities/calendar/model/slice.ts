@@ -2,13 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 import dayjs, { Dayjs } from "dayjs";
 
 export interface DayState {
-  date: Dayjs;
+  date: string;
   //   start_time: string;
   //   end_time: string;
 }
 
 const initialState: DayState = {
-  date: dayjs(Date.now()),
+  date: JSON.stringify(dayjs(Date.now())),
   //   start_time: "00:00",
   //   end_time: "00:00",
 };

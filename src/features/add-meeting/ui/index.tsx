@@ -1,12 +1,12 @@
 import {
   Typography,
   FormControl,
-  InputLabel,
+  Button,
   MenuItem,
   Switch,
 } from "@mui/material";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import BaseModal from "../../../shared/ui/BaseBox";
+import { BaseModal } from "../../../shared/ui";
 import { Slot } from "../../../shared/model/types";
 import { useState } from "react";
 import { meetingTypes } from "../../../mocks";
@@ -22,40 +22,41 @@ export const slots: TSlot[] = [
 ];
 export const AddMeeting = ({ slotm }: PropsAddMeeting) => {
   const [typeMeet, setTypeMeet] = useState<string>("");
-  const [slot, setSlot] = useState<Slot>();
+  const [slot, setSlot] = useState<TSlot>(slots[0]);
   const [checked, setChecked] = useState<boolean>(false);
 
   const handleChange = (event: SelectChangeEvent) => {
     setTypeMeet(String(event.target.value));
   };
   const handleChangeSlot = (event: SelectChangeEvent) => {
-    setSlot({ start_time: event.target.value, end_time: "14:00" });
+    setSlot(event.target.value);
   };
   const handleCheck = (event: React.ChangeEvent<HTMLInputElement>) => {
     setChecked(event.target.checked);
   };
   return (
     <BaseModal eventName="Создать заявку">
-      <FormControl fullWidth>
+      <FormControl>
         <Typography>Дата 18.09.2024</Typography>
-        <Typography>30 минут</Typography>
-        <InputLabel id="slot-select-label">Начало встречи</InputLabel>
+        <Typography>60 минут</Typography>
         <Select
           labelId="slot-select-label"
           id="slot-select"
-          defaultValue={String(slotm.start_time.getDate())}
-          value={slot.start_time}
+          defaultValue={slot[0]}
+          value={`${slot?.start_time} - ${slot?.end_time}`}
           label="Начало встречи"
           onChange={handleChangeSlot}
         >
           {slots.map((item) => (
-            <MenuItem value={item.start_time}>{item.start_time}</MenuItem>
+            <MenuItem
+              value={`${slot?.start_time} - ${slot?.end_time}`}
+            >{`${slot?.start_time} - ${slot?.end_time}`}</MenuItem>
           ))}
         </Select>
-        <InputLabel id="meet-type-select-label">Тип встречи</InputLabel>
         <Select
           labelId="meet-type-select-label"
           id="meet-type-select"
+          defaultValue={meetingTypes[0]}
           value={typeMeet}
           label="Тип встречи"
           onChange={handleChange}
@@ -64,11 +65,13 @@ export const AddMeeting = ({ slotm }: PropsAddMeeting) => {
             <MenuItem value={item}>{item}</MenuItem>
           ))}
         </Select>
+        <div>{checked === true ? "offline" : "online"}</div>
         <Switch
           checked={checked}
           onChange={handleCheck}
           inputProps={{ "aria-label": "controlled" }}
         />
+        <Button>Сохранить</Button>
       </FormControl>
     </BaseModal>
   );

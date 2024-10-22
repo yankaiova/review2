@@ -1,8 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Layout } from "../../widgets/layout/ui";
 import { lazy } from "react";
-
-const SearchPage = lazy(() => import("../../pages/search"));
+import { CalendarPage } from "../../pages/calendar";
+import { MeetingEditPage } from "../../pages/meeting-edit";
 
 export const routes = createBrowserRouter([
   {
@@ -11,33 +11,33 @@ export const routes = createBrowserRouter([
     errorElement: <div>Oops...</div>,
     children: [
       {
-        path: "/calendar",
+        path: "/",
         element: <CalendarPage />,
       },
+      // {
+      //   path: "/meeting/:id",
+      //   element: <DetailMeetingPage />,
+      //   children: [
       {
-        path: "/meeting/:id",
-        element: <DetailMeetingPage />,
-        children: [
-          {
-            path: "/meeting/:id/edit",
-            element: <EditMeetingPage />,
-          },
-        ],
+        path: "/meeting/:id/edit",
+        element: <MeetingEditPage />,
       },
-      {
-        path: "/slot/:id",
-        element: <DetailSlotPage />,
-        children: [
-          {
-            path: "/slot/:id/edit",
-            element: <EditSlotPage />,
-          },
-        ],
-      },
-      {
-        path: "/search",
-        element: <SearchPage />,
-      },
+      //   ],
+      // },
+      // {
+      //   path: "/slot/:id",
+      //   element: <DetailSlotPage />,
+      //   children: [
+      // {
+      //   path: "/slot/:id/edit",
+      //   element: <EditSlotPage />,
+      // },
+      //   ],
+      // },
+      // {
+      //   path: "/search",
+      //   element: <SearchPage />,
+      // },
     ],
   },
 ]);

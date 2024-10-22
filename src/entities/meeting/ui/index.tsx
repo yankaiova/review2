@@ -15,7 +15,8 @@ export const MeetingItem = ({ meeting }: { meeting: Meeting }) => {
   return (
     <Stack direction="row" alignItems="center" justifyContent="space-between">
       <Typography variant="body2" color="text.secondary">
-        {String(meeting.start_time)} - {String(meeting.end_time)}
+        {String(meeting.start_time).slice(-5)} -{" "}
+        {String(meeting.end_time).slice(-5)}
       </Typography>
       <Typography variant="body2" color="text.secondary">
         {meeting.meeting_status}

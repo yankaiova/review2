@@ -1,10 +1,11 @@
+export { Dayjs } from "dayjs";
 export interface Meeting {
   meeting_id: number;
   expert_id: number;
   client_id: number;
   slot_id: number;
-  start_time: Date;
-  end_time: Date;
+  start_time: string;
+  end_time: string;
   meeting_type: string;
   meeting_status: string;
 }
@@ -19,8 +20,8 @@ export type MeetingMaterial = {
 export interface Slot {
   slot_id: number;
   user_id: number;
-  start_time: Date;
-  end_time: Date;
+  start_time: string;
+  end_time: string;
   description: string;
   type_slot: string;
   is_availible: boolean;

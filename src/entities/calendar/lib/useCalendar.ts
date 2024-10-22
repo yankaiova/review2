@@ -9,7 +9,7 @@ export const useCalendar = () => {
   const date = useSelector(getDate);
 
   const setNewDate = useCallback(
-    (newDate: Dayjs) => {
+    (newDate: string) => {
       dispatch(setDate(newDate));
     },
     [dispatch, date]
