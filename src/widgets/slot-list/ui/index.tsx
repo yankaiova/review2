@@ -1,11 +1,9 @@
-import { Dayjs } from "dayjs";
+import { useCalendar } from "../../../entities/calendar/lib/useCalendar";
 import { Slot } from "../../../shared/model/types";
 
-type PropsSlotList = {
-  date: Dayjs;
-};
 const slots: Slot[] = [];
-export const SlotList = ({ date }: PropsSlotList) => {
+export const SlotList = () => {
+  const { date } = useCalendar();
   if (slots.length === 0) {
     return <div>Нет слотов текущую дату</div>;
   }

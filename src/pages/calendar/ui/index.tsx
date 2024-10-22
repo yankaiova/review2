@@ -1,4 +1,4 @@
-import { BaseCalendar } from "../../../widgets/calendarWithMeeting/ui";
+import { FullCalendar } from "../../../widgets/calendarWithMeeting/ui";
 export const CalendarPage = () => {
-  <BaseCalendar />;
+  <FullCalendar />;
 };

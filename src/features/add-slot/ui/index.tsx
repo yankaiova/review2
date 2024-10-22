@@ -1,10 +1,9 @@
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import { Button } from "@mui/material";
-import { Dayjs } from "dayjs";
-type PropsAddSlot = {
-  date: Dayjs;
-};
-export const AddSlot = ({ date }: PropsAddSlot) => {
+import { useCalendar } from "../../../entities/calendar/lib/useCalendar";
+
+export const AddSlot = () => {
+  const { date } = useCalendar();
   const handleClickToAdd = () => {};
   return (
     <Button onClick={handleClickToAdd}>
