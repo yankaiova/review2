@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import BaseModal from "../../../shared/ui/BaseModal";
+import BaseModal from "../../../shared/ui/BaseBox";
 
 export const RescheduleMeeting = ({ meeting_id }: { meeting_id: number }) => {
   const rescheduleMeeting = () => {};

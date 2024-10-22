@@ -6,7 +6,7 @@ import {
   Switch,
 } from "@mui/material";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import BaseModal from "../../../shared/ui/BaseModal";
+import BaseModal from "../../../shared/ui/BaseBox";
 import { Slot } from "../../../shared/model/types";
 import { useState } from "react";
 import { meetingTypes } from "../../../mocks";

@@ -1,5 +1,5 @@
 import { Box, Rating, Typography } from "@mui/material";
-import BaseModal from "../../../shared/ui/BaseModal";
+import BaseModal from "../../../shared/ui/BaseBox";
 import { useState } from "react";
 export const Rate = () => {
   const [value, setValue] = useState<number | null>(5);
