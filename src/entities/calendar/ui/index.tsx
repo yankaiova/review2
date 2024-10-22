@@ -6,6 +6,11 @@ import { useState } from "react";
 import dayjs, { Dayjs } from "dayjs";
 
 export const BaseCalendar = () => {
+  const style = {
+    border: "1px solid darkblue",
+    borderRadius: "10px",
+  };
+
   const { setNewDate } = useCalendar();
   const [value, setValue] = useState<Dayjs>(dayjs(Date.now()));
   function setDate(newValue: Dayjs) {
@@ -16,6 +21,7 @@ export const BaseCalendar = () => {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DateCalendar
+        sx={style}
         value={value}
         onChange={(newValue: Dayjs) => setDate(newValue)}
         views={["year", "month", "day"]}

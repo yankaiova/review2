@@ -10,11 +10,13 @@ export const Header = () => {
   return (
     <div
       style={{
+        width: "100vw",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         columnGap: "1%",
-        border: "1px solid darkblue",
+        borderTop: "1px solid darkblue",
+        borderBottom: "1px solid darkblue",
         padding: "20px",
       }}
     >
