@@ -19,7 +19,7 @@ P2P-Review создан, чтобы упростить обмен знаниям
 # Инструкция для запуска
 Клонируете репозиторий
 ```
-git clone https://github.com/yankaiova/album.git
+git clone https://github.com/yankaiova/review2.git
 ```
 Установка зависимостей
 ```
