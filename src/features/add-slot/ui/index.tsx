@@ -1,4 +1,3 @@
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import { Typography } from "@mui/material";
 import { useCalendar } from "../../../entities/calendar";
 import { BaseModal } from "../../../shared/ui";
@@ -39,8 +38,7 @@ export const AddSlot = () => {
   const handleClickToAdd = () => {};
   return (
     <div>
-      <AddCircleOutlineIcon />
-      <BaseModal eventName="добавить">
+      <BaseModal eventName="добавить слот">
         <Typography>
           {dateV} {startTime} - {endTime}. Слот на {time} м.
         </Typography>
