@@ -7,7 +7,7 @@ import dayjs, { Dayjs } from "dayjs";
 
 export const BaseCalendar = () => {
   const style = {
-    border: "1px solid darkblue",
+    boxShadow: "0px 2px 18px 0px #00000020",
     borderRadius: "10px",
   };
 

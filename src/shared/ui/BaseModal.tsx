@@ -1,6 +1,7 @@
-import { Button, Modal } from "@mui/material";
+import { Modal } from "@mui/material";
 import { BaseBox } from "./BaseBox";
 import { useState } from "react";
+import { BaseButton } from ".";
 
 type PropsBaseModal = {
   eventName: string;
@@ -14,7 +15,7 @@ export function BaseModal({ eventName, children }: PropsBaseModal) {
 
   return (
     <div>
-      <Button onClick={handleOpen}>{eventName}</Button>
+      <BaseButton text={eventName} onClick={handleOpen} />
       <Modal open={open} onClose={handleClose}>
         <BaseBox>{children}</BaseBox>
       </Modal>

@@ -33,14 +33,15 @@ export const FullCalendar = () => {
       >
         <BaseCalendar />
         <Box>
-          <Typography variant="h5" color="primary.main" marginBottom="15px">
+          <Typography variant="h5" color="#2FB3FF" marginBottom="15px">
             Мои мероприятия
           </Typography>
           <MeetingList />
-          <Typography variant="h5" color="primary.main" margin={"30px 0 15px"}>
+          <Typography variant="h5" color="#2FB3FF" margin={"30px 0 15px"}>
             Мои слоты
           </Typography>
           <SlotList />
+          <AddSlot />
         </Box>
       </Stack>
     </Container>
