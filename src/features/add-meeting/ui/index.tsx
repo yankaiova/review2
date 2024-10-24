@@ -1,78 +1,88 @@
-import {
-  Typography,
-  FormControl,
-  Button,
-  MenuItem,
-  Switch,
-} from "@mui/material";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
-import { BaseModal } from "../../../shared/ui";
-import { Slot } from "../../../shared/model/types";
+import { Typography, FormControl, Switch } from "@mui/material";
+import { BaseBox, BaseButton, BaseTypography } from "../../../shared/ui";
 import { useState } from "react";
-import { meetingTypes } from "../../../mocks";
+import { Box, List, ListItem, Divider, TextField } from "@mui/material";
 
-type PropsAddMeeting = {
-  slotm: Slot;
-};
-type TSlot = { start_time: string; end_time: string };
+export const AddMeeting = () => {
+  const [s, setS] = useState<string[]>([]);
 
-export const slots: TSlot[] = [
-  { start_time: "12:30", end_time: "13:00" },
-  { start_time: "14:00", end_time: "14:30" },
-];
-export const AddMeeting = ({ slotm }: PropsAddMeeting) => {
-  const [typeMeet, setTypeMeet] = useState<string>("");
-  const [slot, setSlot] = useState<TSlot>(slots[0]);
   const [checked, setChecked] = useState<boolean>(false);
 
-  const handleChange = (event: SelectChangeEvent) => {
-    setTypeMeet(String(event.target.value));
-  };
-  const handleChangeSlot = (event: SelectChangeEvent) => {
-    setSlot(event.target.value);
-  };
   const handleCheck = (event: React.ChangeEvent<HTMLInputElement>) => {
     setChecked(event.target.checked);
   };
+  const style = {
+    marginTop: "7px",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+  };
+  const style1 = {
+    py: 0,
+    width: "100%",
+    maxWidth: 360,
+    borderColor: "divider",
+  };
   return (
-    <BaseModal eventName="Создать заявку">
+    <BaseBox>
+      <Box sx={style}>
+        <Typography variant="h5" component="div">
+          День
+        </Typography>
+        <Typography variant="h5" component="div" color="#2FB3FF">
+          24.10.2024
+        </Typography>
+      </Box>
+      <Box sx={style}>
+        <BaseTypography>Начало</BaseTypography>
+        <BaseTypography>12:00</BaseTypography>
+      </Box>
+      <Box sx={style}>
+        <BaseTypography>Конец</BaseTypography>
+        <BaseTypography>13:00</BaseTypography>
+      </Box>
       <FormControl>
-        <Typography>Дата 18.09.2024</Typography>
-        <Typography>60 минут</Typography>
-        <Select
-          labelId="slot-select-label"
-          id="slot-select"
-          defaultValue={slot[0]}
-          value={`${slot?.start_time} - ${slot?.end_time}`}
-          label="Начало встречи"
-          onChange={handleChangeSlot}
+        <Typography color="#2FB3FF">Встреча на 60 минут</Typography>
+        <div
+          style={{
+            marginTop: "15px",
+            display: "flex",
+            justifyContent: "space-berween",
+            alignItems: "center",
+          }}
         >
-          {slots.map((item) => (
-            <MenuItem
-              value={`${slot?.start_time} - ${slot?.end_time}`}
-            >{`${slot?.start_time} - ${slot?.end_time}`}</MenuItem>
-          ))}
-        </Select>
-        <Select
-          labelId="meet-type-select-label"
-          id="meet-type-select"
-          defaultValue={meetingTypes[0]}
-          value={typeMeet}
-          label="Тип встречи"
-          onChange={handleChange}
-        >
-          {meetingTypes.map((item: string) => (
-            <MenuItem value={item}>{item}</MenuItem>
-          ))}
-        </Select>
-        <div>{checked === true ? "offline" : "online"}</div>
-        <Switch
-          checked={checked}
-          onChange={handleCheck}
-          inputProps={{ "aria-label": "controlled" }}
+          <Switch
+            checked={checked}
+            onChange={handleCheck}
+            inputProps={{ "aria-label": "controlled" }}
+          />
+          <div>{checked === true ? "offline" : "online"}</div>
+        </div>
+        <Typography variant="body1" component="div" marginTop="15px">
+          Материалы
+        </Typography>
+        <List sx={style1}>
+          <ListItem>
+            {" "}
+            <Typography color="#2FB3FF">Ссылка на диск</Typography>
+          </ListItem>
+          <Divider variant="middle" component="li" />
+          <ListItem>
+            {" "}
+            <Typography color="#2FB3FF">Репозиторий</Typography>
+          </ListItem>
+        </List>
+        <BaseButton text="Прикрепить" />
+        <div style={{ marginTop: "20px" }}></div>
+        <TextField
+          id="outlined-textarea"
+          label="Описание"
+          placeholder="Добавьте описание"
+          multiline
         />
-        <Button>Сохранить</Button>
+        <div style={{ marginTop: "20px" }}></div>
+        <BaseButton text="Сохранить" />
       </FormControl>
-    </BaseModal>
+    </BaseBox>
   );
 };

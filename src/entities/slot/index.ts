@@ -1,1 +1,2 @@
-export { SlotItem } from "./ui";
+export { SlotItem } from "./ui/SlotItem";
+export { SlotCard } from "./ui/SlotCard";

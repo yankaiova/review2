@@ -1,11 +1,19 @@
 import { Typography } from "@mui/material";
 import { useCalendar } from "../../../entities/calendar";
-import { BaseModal } from "../../../shared/ui";
-import { Select, InputLabel, MenuItem } from "@mui/material";
+import { BaseButton, BaseModal, BaseTypography } from "../../../shared/ui";
+import { Select, Stack, MenuItem, Box } from "@mui/material";
 import { useState, useEffect } from "react";
 import { calculateEndTime } from "../../../shared/lib/calculateEndTime";
 import { dateView } from "../../../shared/lib/dateView";
 export const AddSlot = () => {
+  const style = {
+    maxWidth: "250px",
+    marginTop: "15px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: "10px",
+  };
   const startSlots = [
     "12:00",
     "12:30",
@@ -35,40 +43,45 @@ export const AddSlot = () => {
     setEndTime(t);
   }, [time, startTime]);
 
-  const handleClickToAdd = () => {};
   return (
-    <div>
-      <BaseModal eventName="добавить слот">
-        <Typography>
-          {dateV} {startTime} - {endTime}. Слот на {time} м.
+    <BaseModal eventName="добавить слот">
+      <Stack
+        direction="column"
+        gap="10px"
+        alignItems="start"
+        marginLeft="50px"
+        sx={{ width: "300px" }}
+      >
+        <Typography variant="h6" component="div" color="text.main">
+          {dateV} {startTime} - {endTime}
         </Typography>
-        <InputLabel id="slot-add-select-label">Начало в</InputLabel>
-        <Select
-          id="slot-add-select"
-          value={startTime}
-          label="Начало в"
-          onChange={handleChangeStart}
-        >
-          {startSlots.map((item: string) => (
-            <MenuItem key={"slot" + item} value={item}>
-              {item}
-            </MenuItem>
-          ))}
-        </Select>
-        <InputLabel id="slot-t-select-label">Тайминг</InputLabel>
-        <Select
-          id="slot-t-select"
-          value={time}
-          label="Тайминг"
-          onChange={handleChangeTime}
-        >
-          {timer.map((item: number) => (
-            <MenuItem key={"slot" + item} value={item}>
-              {item + "м"}
-            </MenuItem>
-          ))}
-        </Select>
-      </BaseModal>
-    </div>
+        <Typography color="#2FB3FF">Слот на {time} минут</Typography>
+        <Box sx={style}>
+          <BaseTypography>Начало</BaseTypography>
+          <Select
+            id="slot-add-select"
+            value={startTime}
+            onChange={handleChangeStart}
+          >
+            {startSlots.map((item: string) => (
+              <MenuItem key={"slot" + item} value={item}>
+                {item}
+              </MenuItem>
+            ))}
+          </Select>
+        </Box>
+        <Box sx={style}>
+          <BaseTypography>Рассчитать на</BaseTypography>
+          <Select id="slot-t-select" value={time} onChange={handleChangeTime}>
+            {timer.map((item: number) => (
+              <MenuItem key={"slot" + item} value={item}>
+                {item + "м"}
+              </MenuItem>
+            ))}
+          </Select>
+        </Box>
+        <BaseButton text="Сохранить" />
+      </Stack>
+    </BaseModal>
   );
 };

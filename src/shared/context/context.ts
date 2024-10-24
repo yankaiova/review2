@@ -6,8 +6,8 @@ type Props = {
   setUser: (value: number) => void;
 };
 export const AuthContext = createContext<Props>({
-  role: "client",
+  role: "expert",
   setRole: () => {},
-  user_id: 0,
+  user_id: 1,
   setUser: () => {},
 });

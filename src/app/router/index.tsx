@@ -2,10 +2,10 @@ import { createBrowserRouter } from "react-router-dom";
 import { Layout } from "../../widgets/layout/ui";
 import { CalendarPage } from "../../pages/calendar";
 import { MeetingEditPage } from "../../pages/meeting-edit";
+import { SearchPage } from "../../pages/search";
 import { HomePage } from "../../pages/main";
-import { lazy } from "react";
-
-//const SearchPage = lazy(() => import("../../pages/search"));
+import { PrivateRoute } from "./private";
+import { CreatePage } from "../../pages/createPage";
 
 export const routes = createBrowserRouter([
   {
@@ -17,14 +17,33 @@ export const routes = createBrowserRouter([
         path: "/",
         element: <HomePage />,
       },
+
+      {
+        path: "/search",
+        element: (
+          <PrivateRoute>
+            <SearchPage />
+          </PrivateRoute>
+        ),
+      },
+      // { path: "/createmeet", element: <CreatePage /> },
+
       {
         path: "/calendar",
-        element: <CalendarPage />,
+        element: (
+          <PrivateRoute>
+            <CalendarPage />
+          </PrivateRoute>
+        ),
       },
 
       {
         path: "/meeting/:id/edit",
-        element: <MeetingEditPage />,
+        element: (
+          <PrivateRoute>
+            <MeetingEditPage />
+          </PrivateRoute>
+        ),
       },
     ],
   },
